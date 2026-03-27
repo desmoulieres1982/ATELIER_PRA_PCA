@@ -12,6 +12,9 @@ def get_conn():
     conn = sqlite3.connect(DB_PATH)
     return conn
 
+
+
+
 def init_db():
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = get_conn()
