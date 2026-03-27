@@ -272,7 +272,8 @@ Difficulté : Moyenne (~2 heures)
 ### **Atelier 2 : Choisir notre point de restauration**  
 Aujourd’hui nous restaurobs “le dernier backup”. Nous souhaitons **ajouter la capacité de choisir un point de restauration**.
 
-*..Décrir ici votre procédure de restauration (votre runbook)..*  
+*L’opérateur liste les backups disponibles, choisit le fichier correspondant au point de restauration souhaité, puis remplace la base active par ce backup. L’application est ensuite redémarrée et la restauration validée via les endpoints /status et /events pour confirmer le bon fonctionnement.
+*  
   
 ---------------------------------------------------
 Evaluation
