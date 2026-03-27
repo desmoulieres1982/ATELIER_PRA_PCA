@@ -231,22 +231,23 @@ Faites preuve de pédagogie et soyez clair dans vos explications et procedures d
 **Exercice 1 :**  
 Quels sont les composants dont la perte entraîne une perte de données ?  
   
-*..Répondez à cet exercice ici..*
+*Ce sont les PVC Pra_data et PVC Pra_backup qui peuvent entrainer les pertes de données, le noeud voir le cluster*
 
 **Exercice 2 :**  
 Expliquez nous pourquoi nous n'avons pas perdu les données lors de la supression du PVC pra-data  
   
-*..Répondez à cet exercice ici..*
+*Nous n’avons pas perdu les données lors de la suppression du PVC  car le stockage utilisé dans Codespaces repose sur un volume local du node*
 
 **Exercice 3 :**  
 Quels sont les RTO et RPO de cette solution ?  
   
-*..Répondez à cet exercice ici..*
+*RTO => 5 min  et RPO => 1 min
+C’est un RPO extrêmement faible, grâce à la fréquence élevée des sauvegardes.*
 
 **Exercice 4 :**  
 Pourquoi cette solution (cet atelier) ne peux pas être utilisé dans un vrai environnement de production ? Que manque-t-il ?   
   
-*..Répondez à cet exercice ici..*
+* Il manque notamment un stockage réseau ou distribué, un cluster multi‑nœuds, l’externalisation des sauvegardes.*
   
 **Exercice 5 :**  
 Proposez une archtecture plus robuste.   
