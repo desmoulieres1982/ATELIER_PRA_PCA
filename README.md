@@ -252,7 +252,7 @@ Pourquoi cette solution (cet atelier) ne peux pas être utilisé dans un vrai en
 **Exercice 5 :**  
 Proposez une archtecture plus robuste.   
   
-*..Répondez à cet exercice ici..*
+*je proposerais de faire un cluster Kubernetes multi‑nœuds, un stockage réseau résilient, des sauvegardes externalisées, une automatisation complète des backups/restaurations, et un socle d’observabilité et de sécurité*
 
 ---------------------------------------------------
 Séquence 6 : Ateliers  
