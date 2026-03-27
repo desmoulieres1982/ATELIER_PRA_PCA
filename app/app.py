@@ -91,10 +91,7 @@ def count():
 
     return jsonify(count=n)
 
-# ---------- Main ----------
-if __name__ == "__main__":
-    init_db()
-    app.run(host="0.0.0.0", port=8080)
+
 
 
 @app.route("/status", methods=["GET"])
@@ -139,3 +136,18 @@ def status():
         "last_backup_file": last_backup_file,
         "backup_age_seconds": backup_age_seconds
     })
+
+
+
+
+
+
+
+
+
+# ---------- Main ----------
+if __name__ == "__main__":
+    init_db()
+    app.run(host="0.0.0.0", port=8080)
+
+
