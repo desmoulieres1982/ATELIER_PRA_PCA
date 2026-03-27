@@ -92,7 +92,6 @@ def count():
     return jsonify(count=n)
 
 
-
 @app.get("/status")
 def status():
     init_db()
