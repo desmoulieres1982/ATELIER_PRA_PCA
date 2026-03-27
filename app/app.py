@@ -91,51 +91,31 @@ def count():
 
     return jsonify(count=n)
 
-
-
-
-@app.route("/status", methods=["GET"])
+@app.get("/status")
 def status():
-    import time
+    count = count()["count"]
+    last_backup_file = None
+    backup_age_seconds = None
 
-    # 1. Nombre d'événements en base
     try:
-        conn = get_conn()
-        cursor = conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM events")
-        count = cursor.fetchone()[0]
-        conn.close()
-    except Exception:
-        count = None
+        files = [f for f in os.listdir(backup_dir) if f.endswith(".db")]
+        if files:
+            files.sort(reverse=True)
+            last_backup = files[0]
 
-    # 2. Dernier fichier de backup
-    BACKUP_DIR = "/backup"
-    try:
-        backup_files = [
-            f for f in os.listdir(BACKUP_DIR)
-            if f.endswith(".db")
-        ]
-        if backup_files:
-            last_backup_file = max(
-                backup_files,
-                key=lambda f: os.path.getmtime(os.path.join(BACKUP_DIR, f))
-            )
-            last_backup_path = os.path.join(BACKUP_DIR, last_backup_file)
-
-            # 3. Âge du dernier backup
-            backup_age_seconds = int(time.time() - os.path.getmtime(last_backup_path))
-        else:
-            last_backup_file = None
-            backup_age_seconds = None
+            full_path = os.path.join(backup_dir, last_backup)
+            mtime = os.path.getmtime(full_path)
+            backup_age = int(time.time() - mtime)
     except Exception:
-        last_backup_file = None
-        backup_age_seconds = None
+        pass
 
     return jsonify({
         "count": count,
-        "last_backup_file": last_backup_file,
-        "backup_age_seconds": backup_age_seconds
+        "last_backup_file": last_backup,
+        "backup_age_seconds": backup_age
     })
+
+
 
 
 
